@@ -12,10 +12,12 @@ import kotlinx.coroutines.launch
 
 class MenuViewModel(application: Application): AndroidViewModel(application) {
     private val repository: MenuRepository
+    var allOptionsOfTheMenu : LiveData<List<Menu>>
     lateinit var menu : LiveData<Menu>
     init {
         val dao = MenuDatabase.getDatabase(application).menuDAO()
         repository = MenuRepository(dao)
+        allOptionsOfTheMenu = repository.getAllOptionsOfTheMenu()
     }
     fun insert(menu: Menu) = viewModelScope.launch(Dispatchers.IO){
         repository.insert(menu)
