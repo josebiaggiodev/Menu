@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="br.edu.ifsp.aluno.menu.ListFragment"
+        android:name="br.edu.ifsp.aluno.menu.ui.ListFragment"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="br.edu.ifsp.aluno.menu.registerFragment"
+        android:name="br.edu.ifsp.aluno.menu.ui.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
 </navigation>

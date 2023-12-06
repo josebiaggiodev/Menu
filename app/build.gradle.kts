@@ -6,11 +6,11 @@ plugins {
 
 android {
     namespace = "br.edu.ifsp.aluno.menu"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "br.edu.ifsp.aluno.menu"
-        minSdk = 23
+        minSdk = 33
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
