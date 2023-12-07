@@ -10,10 +10,18 @@ class MenuAdapter():
     RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
     private lateinit var binding: MenuCellBinding
     private var menuList = ArrayList<Menu>()
+    var menuListFilterable = ArrayList<Menu>()
+    var listener: MenuListener?=null
     fun updateList(newList: ArrayList<Menu> ){
         menuList = newList
+        menuListFilterable = menuList
         notifyDataSetChanged()
     }
+
+    fun setClickListener(listener: MenuListener) {
+        this.listener = listener
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -30,5 +38,14 @@ class MenuAdapter():
     inner class MenuViewHolder(view:MenuCellBinding): RecyclerView.ViewHolder(view.root)
     {
         val dayVH = view.day
+        init {
+            view.root.setOnClickListener {
+                listener?.onItemClick(adapterPosition)
+            }
+        }
+    }
+
+    interface MenuListener {
+        fun onItemClick(pos: Int)
     }
 }

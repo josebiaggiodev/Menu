@@ -4,21 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:id="@+id/editTextDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/day"
         android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/editTextDay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"/>
+
     <TextView
-        android:id="@+id/editTextMeat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/meat"
         android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editTextMeat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"/>
+
     <TextView
-        android:id="@+id/editTextSalad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/salad"
         android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editTextSalad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"/>
 </LinearLayout>

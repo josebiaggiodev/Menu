@@ -22,4 +22,10 @@ class MenuViewModel(application: Application): AndroidViewModel(application) {
     fun insert(menu: Menu) = viewModelScope.launch(Dispatchers.IO){
         repository.insert(menu)
     }
+
+    fun getMenuById(id: Int) {
+        viewModelScope.launch {
+            menu = repository.getMenuById(id)
+        }
+    }
 }

@@ -12,4 +12,8 @@ class MenuRepository (private val menuDAO: MenuDAO) {
     fun getAllOptionsOfTheMenu(): LiveData<List<Menu>> {
         return menuDAO.getAllOptionsOfTheMenu()
     }
+
+    fun getMenuById(id: Int): LiveData<Menu>{
+        return menuDAO.getMenuById(id)
+    }
 }

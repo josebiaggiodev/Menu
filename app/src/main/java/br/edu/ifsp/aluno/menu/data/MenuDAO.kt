@@ -11,4 +11,7 @@ interface MenuDAO {
     suspend fun insert(menu: Menu)
     @Query("SELECT * FROM menu ORDER BY day")
     fun getAllOptionsOfTheMenu(): LiveData<List<Menu>>
+
+    @Query("SELECT * FROM menu WHERE id=:id")
+    fun getMenuById(id: Int): LiveData<Menu>
 }
