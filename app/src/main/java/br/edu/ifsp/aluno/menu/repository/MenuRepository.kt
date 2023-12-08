@@ -9,6 +9,14 @@ class MenuRepository (private val menuDAO: MenuDAO) {
         menuDAO.insert(menu)
     }
 
+    suspend fun update(menu: Menu){
+        menuDAO.update(menu)
+    }
+
+    suspend fun delete(menu: Menu){
+        menuDAO.delete(menu)
+    }
+
     fun getAllOptionsOfTheMenu(): LiveData<List<Menu>> {
         return menuDAO.getAllOptionsOfTheMenu()
     }

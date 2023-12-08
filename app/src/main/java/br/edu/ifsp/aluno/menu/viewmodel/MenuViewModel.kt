@@ -23,6 +23,14 @@ class MenuViewModel(application: Application): AndroidViewModel(application) {
         repository.insert(menu)
     }
 
+    fun update(menu: Menu) = viewModelScope.launch(Dispatchers.IO){
+        repository.update(menu)
+    }
+
+    fun delete(menu: Menu) = viewModelScope.launch(Dispatchers.IO){
+        repository.delete(menu)
+    }
+
     fun getMenuById(id: Int) {
         viewModelScope.launch {
             menu = repository.getMenuById(id)
