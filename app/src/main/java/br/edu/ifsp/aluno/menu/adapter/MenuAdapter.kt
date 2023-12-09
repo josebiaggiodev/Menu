@@ -2,17 +2,20 @@ package br.edu.ifsp.aluno.menu.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.ifsp.aluno.menu.data.Menu
 import br.edu.ifsp.aluno.menu.databinding.MenuCellBinding
 
 class MenuAdapter():
-    RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
+    RecyclerView.Adapter<MenuAdapter.MenuViewHolder>(), Filterable {
     private lateinit var binding: MenuCellBinding
     private var menuList = ArrayList<Menu>()
     var menuListFilterable = ArrayList<Menu>()
     var listener: MenuListener?=null
-    fun updateList(newList: ArrayList<Menu> ){
+
+    fun updateList(newList: ArrayList<Menu>) {
         menuList = newList
         menuListFilterable = menuList
         notifyDataSetChanged()
@@ -47,5 +50,34 @@ class MenuAdapter():
 
     interface MenuListener {
         fun onItemClick(pos: Int)
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter(){
+            override fun performFiltering(p0: CharSequence?): FilterResults {
+                if (p0.toString().isEmpty()) {
+                    menuListFilterable.clear()
+                    menuListFilterable.addAll(menuList)
+                } else {
+                    val resultList = ArrayList<Menu>()
+                    for (row in menuList) {
+                        if (row.day.lowercase().contains(p0.toString().lowercase())) {
+                            resultList.add(row)
+                        }
+                    }
+
+                    menuListFilterable.clear()
+                    menuListFilterable.addAll(resultList)
+                }
+
+                val filterResults = FilterResults()
+                filterResults.values = menuListFilterable
+                return filterResults
+            }
+            override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
+                menuListFilterable = p1?.values as ArrayList<Menu>
+                notifyDataSetChanged()
+            }
+        }
     }
 }
